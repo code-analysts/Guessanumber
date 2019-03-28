@@ -1,6 +1,6 @@
 ﻿namespace Guessanumber
 {
-    partial class Form1
+    partial class SecondForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SecondForm));
             this.TitleName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Txtnumber1To10 = new System.Windows.Forms.TextBox();
@@ -52,11 +52,11 @@
             this.TitleName.AutoSize = true;
             this.TitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TitleName.ForeColor = System.Drawing.Color.Lime;
-            this.TitleName.Location = new System.Drawing.Point(201, 137);
+            this.TitleName.Location = new System.Drawing.Point(147, 151);
             this.TitleName.Name = "TitleName";
-            this.TitleName.Size = new System.Drawing.Size(458, 46);
+            this.TitleName.Size = new System.Drawing.Size(593, 46);
             this.TitleName.TabIndex = 0;
-            this.TitleName.Text = "Guess a Number Game";
+            this.TitleName.Text = "Three Attempts for each Level!\r\n";
             this.TitleName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
@@ -74,7 +74,8 @@
             this.Txtnumber1To10.Name = "Txtnumber1To10";
             this.Txtnumber1To10.Size = new System.Drawing.Size(185, 26);
             this.Txtnumber1To10.TabIndex = 2;
-            this.Txtnumber1To10.TextChanged += new System.EventHandler(this.Txtnumber1To10_TextChanged);
+           
+            this.Txtnumber1To10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtnumber1To10_KeyPress);
             // 
             // Txtnumber20To40
             // 
@@ -82,7 +83,8 @@
             this.Txtnumber20To40.Name = "Txtnumber20To40";
             this.Txtnumber20To40.Size = new System.Drawing.Size(185, 26);
             this.Txtnumber20To40.TabIndex = 3;
-            this.Txtnumber20To40.TextChanged += new System.EventHandler(this.Txtnumber20To40_TextChanged);
+           
+            this.Txtnumber20To40.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtnumber20To40_KeyPress);
             // 
             // Txtnumber50To100
             // 
@@ -90,7 +92,8 @@
             this.Txtnumber50To100.Name = "Txtnumber50To100";
             this.Txtnumber50To100.Size = new System.Drawing.Size(185, 26);
             this.Txtnumber50To100.TabIndex = 4;
-            this.Txtnumber50To100.TextChanged += new System.EventHandler(this.Txtnumber50To100_TextChanged);
+           
+            this.Txtnumber50To100.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtnumber50To100_KeyPress);
             // 
             // Buttonresult1to10
             // 
@@ -184,7 +187,7 @@
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
             // 
-            // Form1
+            // SecondForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,9 +206,9 @@
             this.Controls.Add(this.Txtnumber1To10);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TitleName);
-            this.Name = "Form1";
+            this.Name = "SecondForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+           
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

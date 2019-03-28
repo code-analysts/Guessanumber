@@ -8,3 +8,14 @@ C:\Users\Admin\Desktop\Web application\Guessanumber\Guessanumber\Guessanumber\ob
 C:\Users\Admin\Desktop\Web application\Guessanumber\Guessanumber\Guessanumber\obj\Debug\Guessanumber.exe
 C:\Users\Admin\Desktop\Web application\Guessanumber\Guessanumber\Guessanumber\obj\Debug\Guessanumber.pdb
 C:\Users\Admin\Desktop\Web application\Guessanumber\Guessanumber\Guessanumber\obj\Debug\Guessanumber.Form1.resources
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\bin\Debug\Guessanumber.exe.config
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\bin\Debug\Guessanumber.exe
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\bin\Debug\Guessanumber.pdb
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.FirstForm.resources
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.SecondForm.resources
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.Properties.Resources.resources
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.exe
+C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber\obj\Debug\Guessanumber.pdb
