@@ -34,7 +34,9 @@ namespace Guessanumber
         int Numberofguess = 1;
         int PrizeValue1 = 100;
         int PrizeValue2 = 50;
+#pragma warning disable CS0414 // The field 'SecondForm.PrizeValue3' is assigned but its value is never used
         int PrizeValue3 = 20;
+#pragma warning restore CS0414 // The field 'SecondForm.PrizeValue3' is assigned but its value is never used
         GameLogicHandler GuessANumberGame;
 
         public SecondForm()
@@ -48,9 +50,9 @@ namespace Guessanumber
         private void Buttonresult1to10_Click(object sender, EventArgs e)
         {
             
-            GuessANumberGame.attempts_counter++;
+            GuessANumberGame.AttemptsCounter++;
 
-            if(GuessANumberGame.attempts_counter <= 3) // Player has 3 attempts to guess the number
+            if(GuessANumberGame.AttemptsCounter <= 3) // Player has 3 attempts to guess the number
             {
                 // Validate input here. If the inputted value is valid, check if guess is correct.
                 int guess = Convert.ToInt32(Txtnumber1To10.Text);

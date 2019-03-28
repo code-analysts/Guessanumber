@@ -22,7 +22,6 @@ C:\Users\Admin\Desktop\Webapplication\GuessApplication\Guessanumber\Guessanumber
 C:\Users\Admin\source\repos\GuessANumber\Guessanumber\Guessanumber\Guessanumber\bin\Debug\Guessanumber.exe.config
 C:\Users\Admin\source\repos\GuessANumber\Guessanumber\Guessanumber\Guessanumber\bin\Debug\Guessanumber.exe
 C:\Users\Admin\source\repos\GuessANumber\Guessanumber\Guessanumber\Guessanumber\bin\Debug\Guessanumber.pdb
-C:\Users\Admin\source\repos\GuessANumber\Guessanumber\Guessanumber\Guessanumber\obj\Debug\Guessanumber.csprojAssemblyReference.cache
 C:\Users\Admin\source\repos\GuessANumber\Guessanumber\Guessanumber\Guessanumber\obj\Debug\Guessanumber.FirstForm.resources
 C:\Users\Admin\source\repos\GuessANumber\Guessanumber\Guessanumber\Guessanumber\obj\Debug\Guessanumber.SecondForm.resources
 C:\Users\Admin\source\repos\GuessANumber\Guessanumber\Guessanumber\Guessanumber\obj\Debug\Guessanumber.Properties.Resources.resources

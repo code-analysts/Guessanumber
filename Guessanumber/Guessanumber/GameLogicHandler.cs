@@ -26,8 +26,8 @@ namespace Guessanumber
 {
     class GameLogicHandler
     {
-        public int attempts_counter;
-        private int number_to_guess;
+        public int AttemptsCounter { get; set; }
+        private int numberToGuess;
         private int[] prizes;
 
         /*
@@ -42,14 +42,14 @@ namespace Guessanumber
             For games with 1 - 50 range:
             1st attempt = $100, 2nd attempt = $50, 3rd attempt = $25
              
-             */
+        */
 
 
         public void NewGame(int max)
         {
             Random randomizer = new Random();
-            attempts_counter = 0;
-            number_to_guess = randomizer.Next(1, max);
+            AttemptsCounter = 0;
+            numberToGuess = randomizer.Next(1, max);
             prizes = new int[4];
 
             switch (max){
@@ -78,7 +78,7 @@ namespace Guessanumber
         {
             bool is_correct = false;
 
-            if(guess == number_to_guess)
+            if(guess == numberToGuess)
             {
                 is_correct = true;
             }
@@ -90,7 +90,7 @@ namespace Guessanumber
         {
             bool is_lower = false;
 
-            if(guess > number_to_guess)
+            if(guess > numberToGuess)
             {
                 is_lower = true;
             }
@@ -100,7 +100,7 @@ namespace Guessanumber
 
         public int CalculatePrize()
         { 
-            return prizes[attempts_counter];
+            return prizes[AttemptsCounter];
         }
 
     }
