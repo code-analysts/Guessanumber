@@ -1,11 +1,15 @@
-﻿//Author:Gagandeep Kaur
+﻿/*Author:Gagandeep Kaur
 //Date created:27/03/2019
-//Date last modified:27/03/2019
-//Last person who modified file:Gagandeep Kaur
+//Date last modified:28/03/2019
+//Last person who modified file: Farrah Marie Chavez
 //File Description:This file describes the logic behind the guess number game.There are three methods for three buttons to check the result for three different attempts made by user.
-//Log:28/03/2019-Added coding for each level on every button with number of attempts and prize(Gagan)
-//Log:28/03/2019-Added FirstForm and code to accept numbers only for textboxes(Gagan)
-//Log:27/03/2019-created user interface and intialize variables(Gagan)
+Log:
+28/03/2019 - Added the GameLogicHandler, Commented code block in Buttonresult1to10_Click() function to make use of the GameLogicHandler functions. (Farrah)
+28/03/2019-Added coding for each level on every button with number of attempts and prize(Gagan)
+28/03/2019-Added FirstForm and code to accept numbers only for textboxes(Gagan)
+27/03/2019-created user interface and intialize variables(Gagan)
+
+*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,14 +35,38 @@ namespace Guessanumber
         int PrizeValue1 = 100;
         int PrizeValue2 = 50;
         int PrizeValue3 = 20;
+        GameLogicHandler GuessANumberGame;
+
         public SecondForm()
         {
             InitializeComponent();
+            GuessANumberGame = new GameLogicHandler();
+            GuessANumberGame.NewGame(10);
         }
+
         //Code for level 1-10
         private void Buttonresult1to10_Click(object sender, EventArgs e)
         {
             
+            GuessANumberGame.attempts_counter++;
+
+            if(GuessANumberGame.attempts_counter <= 3) // Player has 3 attempts to guess the number
+            {
+                // Validate input here. If the inputted value is valid, check if guess is correct.
+                int guess = Convert.ToInt32(Txtnumber1To10.Text);
+                if(GuessANumberGame.IsCorrectGuess(guess))
+                {
+                    MessageBox.Show("You won! Your prize is: $" + GuessANumberGame.CalculatePrize());
+                } else if(GuessANumberGame.IsNumberToGuessLower(guess))
+                {
+                    MessageBox.Show("The number to guess is lower than " + guess + ".");
+                } else
+                {
+                    MessageBox.Show("The number to guess is higher than " + guess + ".");
+                }
+            }
+
+          /*  
             GuessNumber = Convert.ToInt16(Txtnumber1To10.Text);
             //Check number from 1 to 10 first
             if (GuessNumber >= 1 && GuessNumber <= 10)
@@ -78,7 +106,7 @@ namespace Guessanumber
             {
                 MessageBox.Show("Please enter number from 1 to 10");
             }
-            
+            */
         }
         //Code for level 20-40
         private void Buttonresult20to40_Click(object sender, EventArgs e)

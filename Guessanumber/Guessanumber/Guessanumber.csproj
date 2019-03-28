@@ -51,6 +51,7 @@
     <Compile Include="FirstForm.Designer.cs">
       <DependentUpon>FirstForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameLogicHandler.cs" />
     <Compile Include="SecondForm.cs">
       <SubType>Form</SubType>
     </Compile>
