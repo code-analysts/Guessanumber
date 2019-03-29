@@ -1,9 +1,12 @@
 ﻿/*Author:Gagandeep Kaur
 //Date created:27/03/2019
-//Date last modified:28/03/2019
+//Date last modified:29/03/2019
 //Last person who modified file: Farrah Marie Chavez
 //File Description:This file describes the logic behind the guess number game.There are three methods for three buttons to check the result for three different attempts made by user.
 Log:
+29/03/2019 - Refactored the GenerateGame() to be re-used for creating new game (Farrah)
+29/03/2019 - Integrated the InputValidations code file (by Heena)  
+29/03/2019 - Re-created UI to have levels (1-10, 1-20, 
 28/03/2019 - Added the GameLogicHandler, Commented code block in Buttonresult1to10_Click() function to make use of the GameLogicHandler functions. (Farrah)
 28/03/2019-Added coding for each level on every button with number of attempts and prize(Gagan)
 28/03/2019-Added FirstForm and code to accept numbers only for textboxes(Gagan)
@@ -24,12 +27,14 @@ namespace Guessanumber
 {
     public partial class SecondForm : Form
     {
+        /*
         //Initializing varaiables
         static Random r = new Random();
         int RandomValue1 = r.Next(1,10);
         int RandomValue2 = r.Next(20,40);
         int RandomValue3 = r.Next(50,100);
         int GuessNumber;
+
         int NumberofAttempts = 3;
         int Numberofguess = 1;
         int PrizeValue1 = 100;
@@ -37,83 +42,134 @@ namespace Guessanumber
 #pragma warning disable CS0414 // The field 'SecondForm.PrizeValue3' is assigned but its value is never used
         int PrizeValue3 = 20;
 #pragma warning restore CS0414 // The field 'SecondForm.PrizeValue3' is assigned but its value is never used
+*/
         GameLogicHandler GuessANumberGame;
+        InputValidations validator;
 
-        public SecondForm()
+        FirstForm form_1;
+        int maximum_number;
+        bool success = false;
+
+        public SecondForm(FirstForm f, int max)
         {
             InitializeComponent();
+            form_1 = f;
+            maximum_number = max;
             GuessANumberGame = new GameLogicHandler();
-            GuessANumberGame.NewGame(10);
+            validator = new InputValidations();
+            GenerateGame();
+        }
+
+        public void AssignLabel(string level)
+        {
+            Label1to10.Text = "Enter a number from " + level;
         }
 
         //Code for level 1-10
         private void Buttonresult1to10_Click(object sender, EventArgs e)
         {
             
-            GuessANumberGame.AttemptsCounter++;
+            EvaluateGame();
+        }
 
-            if(GuessANumberGame.AttemptsCounter <= 3) // Player has 3 attempts to guess the number
+        private void GenerateGame()
+        {
+            GuessANumberGame.NewGame(maximum_number);
+            GuessANumberGame.AttemptsCounter = 0;
+            
+        }
+
+        private void EvaluateGame()
+        {
+
+            GuessANumberGame.AttemptsCounter++;
+            if (GuessANumberGame.AttemptsCounter <= 3) // Player has 3 attempts to guess the number
             {
                 // Validate input here. If the inputted value is valid, check if guess is correct.
-                int guess = Convert.ToInt32(Txtnumber1To10.Text);
-                if(GuessANumberGame.IsCorrectGuess(guess))
+                string message_validation = validator.checkInputValidity(TxtGuessNumber.Text, form_1.MaximumNumber);
+                if (message_validation == "VALID")
                 {
-                    MessageBox.Show("You won! Your prize is: $" + GuessANumberGame.CalculatePrize());
-                } else if(GuessANumberGame.IsNumberToGuessLower(guess))
-                {
-                    MessageBox.Show("The number to guess is lower than " + guess + ".");
-                } else
-                {
-                    MessageBox.Show("The number to guess is higher than " + guess + ".");
+                    int guess;
+                    if(int.TryParse(TxtGuessNumber.Text, out guess))
+                    {
+                        // Parse is successful. Do nothing.
+                    } else
+                    {
+                        MessageBox.Show("There was an error in string parsing.");
+                    }
+                    if (GuessANumberGame.IsCorrectGuess(guess))
+                    {
+                        MessageBox.Show("You won! Your prize is: $" + GuessANumberGame.CalculatePrize());
+                        success = true;
+                    }
+                    else if (GuessANumberGame.IsNumberToGuessLower(guess))
+                    {
+                        MessageBox.Show("The number to guess is lower than " + guess + ".");
+                    }
+                    else
+                    {
+                        MessageBox.Show("The number to guess is higher than " + guess + ".");
+                    }
                 }
+                else
+                {
+                    MessageBox.Show(message_validation);
+                }
+            } else
+            {
+                MessageBox.Show("You have no more attempts left.");
             }
 
-          /*  
-            GuessNumber = Convert.ToInt16(Txtnumber1To10.Text);
-            //Check number from 1 to 10 first
-            if (GuessNumber >= 1 && GuessNumber <= 10)
-            {
-                while (NumberofAttempts > 0)
-                {
-                    if (GuessNumber == RandomValue1)
-                    {
-                        if (Numberofguess == 1)
-                        {
-                            MessageBox.Show("You Guessed a correct number in" + Numberofguess + " attempt and you win $" + PrizeValue3);
-                        }
-                        else
-                        {
-                            MessageBox.Show("You Guessed a correct number in" + Numberofguess + " attempt");
-                            break;
-                        }
-                    }
-                    else if (GuessNumber < RandomValue1)
-                    {
-                        MessageBox.Show("Guess number is Too Low.Try a high number" + "\n" + "Attempts left" + (3 - Numberofguess));
-                    }
-                    else if (GuessNumber > RandomValue1)
-                    {
-                        MessageBox.Show("Guess number is Too High.Try a low number" + "\n" + "Attempts left" + (3 - Numberofguess));
-                    }
-                    Numberofguess++;
-                    NumberofAttempts--;
-                    break;
-                }
-                if (Numberofguess == 4)
-                {
-                    MessageBox.Show("You loose,correct guess is:" + RandomValue1);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter number from 1 to 10");
-            }
-            */
+
+            /*  
+              GuessNumber = Convert.ToInt16(Txtnumber1To10.Text);
+              //Check number from 1 to 10 first
+              if (GuessNumber >= 1 && GuessNumber <= 10)
+              {
+                  while (NumberofAttempts > 0)
+                  {
+                      if (GuessNumber == RandomValue1)
+                      {
+                          if (Numberofguess == 1)
+                          {
+                              MessageBox.Show("You Guessed a correct number in" + Numberofguess + " attempt and you win $" + PrizeValue3);
+                          }
+                          else
+                          {
+                              MessageBox.Show("You Guessed a correct number in" + Numberofguess + " attempt");
+                              break;
+                          }
+                      }
+                      else if (GuessNumber < RandomValue1)
+                      {
+                          MessageBox.Show("Guess number is Too Low.Try a high number" + "\n" + "Attempts left" + (3 - Numberofguess));
+                      }
+                      else if (GuessNumber > RandomValue1)
+                      {
+                          MessageBox.Show("Guess number is Too High.Try a low number" + "\n" + "Attempts left" + (3 - Numberofguess));
+                      }
+                      Numberofguess++;
+                      NumberofAttempts--;
+                      break;
+                  }
+                  if (Numberofguess == 4)
+                  {
+                      MessageBox.Show("You loose,correct guess is:" + RandomValue1);
+                  }
+              }
+              else
+              {
+                  MessageBox.Show("Please enter number from 1 to 10");
+              }
+              */
         }
+
+
+        /*
         //Code for level 20-40
         private void Buttonresult20to40_Click(object sender, EventArgs e)
         {
-            GuessNumber = Convert.ToInt16(Txtnumber20To40.Text);
+         
             //Check number from 20 to 40 first
             if (GuessNumber >= 20 && GuessNumber <= 40)
             {
@@ -158,7 +214,7 @@ namespace Guessanumber
         private void Buttonresult50to100_Click(object sender, EventArgs e)
         {
             
-            GuessNumber = Convert.ToInt16(Txtnumber50To100.Text);
+            //GuessNumber = Convert.ToInt16(Txtnumber50To100.Text);
             GuessNumber = Convert.ToInt16(Txtnumber1To10.Text);
             //Check number from 50 to 100 first
             if (GuessNumber >= 50 && GuessNumber <= 100)
@@ -228,6 +284,33 @@ namespace Guessanumber
             {
                 e.Handled = true;
             }
+        } */
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (success == true)
+            {
+                // Renew the game
+                var confirm_message = MessageBox.Show("Do you want to play a new game?", "New Game Generated", MessageBoxButtons.YesNo);
+                if(confirm_message == DialogResult.Yes)
+                {
+                    GenerateGame();
+                    form_1.Show();
+                  
+                }
+                this.Hide();
+
+            } else
+            {
+                
+                form_1.Show();
+                this.Hide();
+            }
+
+            
+
+            TxtGuessNumber.Text = "";
+
         }
     }
 }

@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="GameLogicHandler.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="InputValidations.cs" />
     <Compile Include="SecondForm.cs">
       <SubType>Form</SubType>
     </Compile>

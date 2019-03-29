@@ -27,6 +27,7 @@ namespace Guessanumber
     class GameLogicHandler
     {
         public int AttemptsCounter { get; set; }
+        public int MaximumNumber { get; set; }
         private int numberToGuess;
         private int[] prizes;
 
@@ -50,6 +51,7 @@ namespace Guessanumber
             Random randomizer = new Random();
             AttemptsCounter = 0;
             numberToGuess = randomizer.Next(1, max);
+            MaximumNumber = max;
             prizes = new int[4];
 
             switch (max){
